@@ -1,3 +1,5 @@
+import logging
+
 import psycopg2
 
 from app import create_app
@@ -21,4 +23,4 @@ with app.app_context():
             with conn.cursor() as cur:
                 cur.execute(user_table)
     except psycopg2.DatabaseError as e:
-        print(e)
+        logging.error(e)

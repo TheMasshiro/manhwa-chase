@@ -135,5 +135,4 @@ def test_login_success(client):
 def test_logout(client):
     response = client.get("/logout")
     assert response.status_code == 302
-    print(response.data)
     assert b"You should be redirected automatically" in response.data

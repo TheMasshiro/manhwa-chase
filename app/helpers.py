@@ -1,3 +1,5 @@
+import logging
+
 import requests
 from flask import current_app, request
 
@@ -26,5 +28,5 @@ def verify_user() -> bool:
             return False
         return True
     except requests.RequestException as e:
-        current_app.logger.error(f"reCAPTCHA verification failed: {e}")
+        logging.error(f"reCAPTCHA verification failed: {e}")
         return False

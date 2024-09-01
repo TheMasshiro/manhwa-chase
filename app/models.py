@@ -25,7 +25,7 @@ def get_db_connection():
 @login.user_loader
 def load_user(user_id):
     user = User(user_id=user_id)
-    print(user)  # Debugging line
+    logging.info(user)  # Debugging line
     return user.get_user("user_id")
 
 

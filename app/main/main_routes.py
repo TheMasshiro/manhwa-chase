@@ -29,7 +29,6 @@ def table():
 @main.route("/favorite/<manga_name>", methods=["GET", "POST"])
 @login_required
 def gate(manga_name):
-    print(manga_name)
     if request.method == "GET":
         return render_template("main/gates.html")
     return render_template("main/gates.html")
