@@ -1,4 +1,4 @@
-# Migle
+# Mingle
 
 ## CS50x Final Project
 
