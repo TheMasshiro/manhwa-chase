@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %}
+    Logica - Create Logic Gates and Truth
+    Tables
+{% endblock %}
+{% block main %}
+    <section class="hero is-primary is-fullheight-with-navbar">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-vcentered">
+                    <div class="column is-5">
+                        <h1 class="title is-2">Welcome to Mingle</h1>
+                        <h2 class="subtitle is-4">Create Logic Gates and Truth Tables with Ease</h2>
+                        <p class="mb-4">
+                            Logica is a user-friendly tool designed to help students understand
+                            and create logic gates and truth tables effortlessly.
+                        </p>
+                        <div class="buttons are-medium">
+                            <a class="button is-success is-rounded hvr-grow js-modal-trigger"
+                               data-target="select-demo-modal">
+                                <span class="icon">
+                                    <i class="fas fa-play" aria-label="Try demo"></i>
+                                </span>
+                                <span>Start Now</span>
+                            </a>
+                            <a href="/register" class="button is-light is-rounded hvr-grow">
+                                <span class="icon">
+                                    <i class="fas fa-sign-in-alt" aria-label="Sign up"></i>
+                                </span>
+                                <span>Sign Up</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="column is-7">
+                        <figure class="image">
+                            <img src="{{ url_for('static', filename='images/app-preview.png') }}"
+                                 alt="Logica app preview"
+                                 class="has-shadow" />
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="title has-text-centered">Features</h2>
+            <h3 class="subtitle has-text-centered">Explore the functionalities of Logica</h3>
+            <div class="columns is-multiline">
+                <div class="column is-6">
+                    <div class="box hvr-float">
+                        <h4 class="title is-4">
+                            <span class="icon has-text-primary">
+                                <i class="fas fa-cogs" aria-label="Create Logics"></i>
+                            </span>
+                            Create Logic
+                        </h4>
+                        <p class="is-size-5">Design various types of logics with intuitive interface.</p>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="box hvr-float">
+                        <h4 class="title is-4">
+                            <span class="icon has-text-primary">
+                                <i class="fas fa-table" aria-label="Generate Truth Tables"></i>
+                            </span>
+                            Generate Truth Tables
+                        </h4>
+                        <p class="is-size-5">Generate truth tables for your logic circuits.</p>
+                    </div>
+                </div>
+                <div class="column is-6 is-offset-3">
+                    <div class="box hvr-float">
+                        <h4 class="title is-4">
+                            <span class="icon has-text-primary">
+                                <i class="fas fa-save" aria-label="Store Templates"></i>
+                            </span>
+                            Store Logics
+                        </h4>
+                        <p class="is-size-5">Save and reuse your favorite logic gate as templates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>© 2024 TheMasshiro. All Rights Reserved.</p>
+            <div class="mt-2">
+                <a href="/about" class="mr-2">About</a>
+            </div>
+        </div>
+    </footer>
+    <div class="modal" id="select-demo-modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <section class="modal-card-body">
+                <div class="content has-text-centered">
+                    <h1>Select a Demo</h1>
+                </div>
+                <div class="columns is-centered">
+                    <div class="column is-narrow">
+                        <div class="buttons are-medium is-centered">
+                            <a href="/logic/create" class="button is-primary is-rounded hvr-grow">
+                                <span class="icon">
+                                    <i class="fas fa-gear" aria-label="Logic Gates"></i>
+                                </span>
+                                <span>Logic Gates</span>
+                            </a>
+                            <a href="/table/create" class="button is-primary is-rounded hvr-grow">
+                                <span class="icon">
+                                    <i class="fas fa-table" aria-label="Truth Table"></i>
+                                </span>
+                                <span>Truth Table</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+{% endblock %}

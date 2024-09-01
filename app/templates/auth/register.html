@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% set current_page = "register" %}
+{% block title %}Mingle - {{ title }}{% endblock %}
+{% block main %}
+    <section class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-8-tablet is-6-desktop is-4-widescreen">
+                        <div class="box">
+                            <h1 class="title has-text-centered is-size-3-mobile is-size-2-tablet">Welcome to Mingle</h1>
+                            <p class="subtitle has-text-centered is-size-6-mobile is-size-5-tablet mb-5">
+                                Register to start tracking your manga adventures
+                            </p>
+                            <form action="{{ url_for("auth.register") }}"
+                                  method="POST"
+                                  id="register-form"
+                                  novalidate>
+                                {{ form.hidden_tag() }}
+                                {% with messages =
+                                    get_flashed_messages(with_categories=true) %}
+                                    {% if messages %}
+                                        {%
+                                        for category, message in messages %}
+                                        <div class="notification is-{{ category }} is-light has-text-centered">{{ message }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}
+                            <div class="field">
+                                {{ form.username.label(class="label") }}
+                                <div class="control has-icons-left">
+                                    {{ form.username(class="input", placeholder="Username", required=true) }}
+                                    <span class="icon is-left">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
+                                {% for error in form.username.errors %}<p class="help is-danger">{{ error }}</p>{% endfor %}
+                            </div>
+                            <div class="field">
+                                {{ form.email.label(class="label") }}
+                                <div class="control has-icons-left has-icons-right">
+                                    {{ form.email(class="input", placeholder="Email address", required=true) }}
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                </div>
+                                {% for error in form.email.errors %}<p class="help is-danger">{{ error }}</p>{% endfor %}
+                            </div>
+                            <div class="field">
+                                {{ form.password.label(class="label") }}
+                                <div class="field has-addons">
+                                    <div class="control has-icons-left is-expanded">
+                                        {{ form.password(class="input", id="password", placeholder="Password", required=true) }}
+                                        <span class="icon is-left">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                    </div>
+                                    <div class="control">
+                                        <a class="button is-info" id="show-password">
+                                            <span class="icon">
+                                                <i class="fas fa-eye" id="password-icon"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                {% for error in form.password.errors %}<p class="help is-danger">{{ error }}</p>{% endfor %}
+                            </div>
+                            <div class="field has-text-centered">
+                                <div class="control">
+                                    <label class="checkbox" id="terms-checkbox">{{ form.terms_and_conditions(required=True) }} I agree to the</label>
+                                    <a class="js-modal-trigger" data-target="terms-and-conditions-modal">Terms and Conditions</a>
+                                </div>
+                                {% for error in form.terms_and_conditions.errors %}<p class="help is-danger">{{ error }}</p>{% endfor %}
+                            </div>
+                            <div class="field mt-5">
+                                <button type="submit" class="g-recaptcha button is-primary is-fullwidth is-medium" data-sitekey={{ site_key }} data-callback='onSubmit' data-action='submit'>Register
+                                </button>
+                            </div>
+                            <div class="field mt-5"></div>
+                            <script>
+                               function onSubmit(token) {
+                                 document.getElementById("register-form").submit();
+                               }
+                            </script>
+                        </form>
+                        <hr class="has-background-grey-lighter my-4" />
+                        <div class="has-text-centered mt-5">
+                            <p class="is-size-6 mb-2">Already have an account?</p>
+                            <a href="/login" class="button is-light is-outlined">Log in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal" id="terms-and-conditions-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Modal title</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <!-- Content ... -->
+        </section>
+        <footer class="modal-card-foot is-justify-content-center">
+            <button class="button is-primary close-modal" id="agree-to-terms">I Understand and Agree</button>
+        </footer>
+    </div>
+</div>
+{% endblock %}
